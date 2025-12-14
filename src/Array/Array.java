@@ -9,9 +9,10 @@ public class Array {
         arr[2] = 3;
         arr[3] = 4;
         arr[4] = 5;
+        arr[5] = 3;
 
         // printing arrays element with a method
-        printArray(arr);
+//        printArray(arr);
 
         // inserting element at a mid position
 //        insertAtMid(arr,3,10);
@@ -19,8 +20,10 @@ public class Array {
 
         // removing element from the array
         // providing array and the index of element to remove from the array
-        removeElement(arr,3);
-        printArray(arr);
+//        removeElement(arr,3);
+//        printArray(arr);
+        LinearSearch.searchMultiple(arr , 3);
+//        LinearSearch.search(arr , 3,true);
 
     }
 
