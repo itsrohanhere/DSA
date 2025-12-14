@@ -14,7 +14,12 @@ public class Array {
         printArray(arr);
 
         // inserting element at a mid position
-        insertAtMid(arr,3,10);
+//        insertAtMid(arr,3,10);
+//        printArray(arr);
+
+        // removing element from the array
+        // providing array and the index of element to remove from the array
+        removeElement(arr,3);
         printArray(arr);
 
     }
@@ -33,6 +38,12 @@ public class Array {
 
         }
         arr[index] = value;
+    }
+
+    static void removeElement(int[] arr, int index) {
+        for(int i = index ; i < arr.length-2 ; i++){
+            arr[i] = arr[i+1];
+        }
     }
 
 }
