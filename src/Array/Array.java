@@ -41,9 +41,18 @@ public class Array {
     }
 
     static void removeElement(int[] arr, int index) {
-        for(int i = index ; i < arr.length-2 ; i++){
-            arr[i] = arr[i+1];
+        for(int i = index ; i <= arr.length-1 ; i++){
+            if(i<arr.length-1) {
+                arr[i] = arr[i + 1];
+            }
+            if(i == arr.length-1) {
+                arr[i] = 0;
+            }
         }
+    }
+
+    static void updateElement(int[] arr, int index, int value) {
+        arr[index] = value;
     }
 
 }
