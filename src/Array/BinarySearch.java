@@ -6,7 +6,8 @@ public class BinarySearch {
 //        int[] arr2 = {99,85,74,65,42,32,20,1};
 //        binarySearch(arr,25);
 //        binarySearchDesc(arr2,20);
-        firstOccuranceByBinarySearch(arr,56);
+//        firstOccuranceByBinarySearch(arr,56);
+        firstOccurance(arr,56);
     }
     static void binarySearch(int[] arr, int target){
         int result = -1;
@@ -72,6 +73,30 @@ public class BinarySearch {
 
             }else{
                 end = mid - 1;
+            }
+        }
+    }
+
+    static void firstOccurance(int[] arr, int target){
+        int start = 0;
+        int end = arr.length -1;
+        int firstOccurance = -1;
+        while(start <= end){
+            int mid = start + (end - start)/2;
+            if(arr[mid] == target){
+                // so now we have the mid on the target
+                // we have to check only the left side of the array
+                firstOccurance = mid;
+                if(arr[firstOccurance-1] == target){
+                    end = mid - 1;
+                }else{
+                    System.out.println("the first occurance of the "+target+" is at Index " + firstOccurance);
+                    return;
+                }
+            }else if(arr[mid] > target){
+                end = mid - 1;
+            }else{
+                start = mid + 1;
             }
         }
     }
