@@ -7,8 +7,10 @@ public class BinarySearch {
 //        binarySearch(arr,25);
 //        binarySearchDesc(arr2,20);
 //        firstOccuranceByBinarySearch(arr,56);
-        firstOccurance(arr,56);
-        lastOccurance(arr,56);
+//        firstOccurance(arr,56);
+//        lastOccurance(arr,56);
+        binarySearchFloor(arr,55);
+
     }
     static void binarySearch(int[] arr, int target){
         int result = -1;
@@ -123,5 +125,32 @@ public class BinarySearch {
                 start = mid + 1;
             }
         }
+    }
+
+    static void binarySearchFloor(int[] arr, int target){
+        int ans = -1;
+        int ans2 =-1;
+        int start = 0;
+        int end = arr.length - 1;
+        while(start <= end){
+            int mid = start + (end - start)/2;
+            if(arr[mid] == target){
+                ans = arr[mid];
+
+                return;
+            }else if(arr[mid] < target){
+                start = mid + 1;
+                ans = arr[mid];
+            }else{
+                end = mid - 1;
+                ans2 = arr[mid];
+            }
+        }
+        System.out.println("element found at index: " + ans+" "+ ans2);
+//        if(result == -1){
+//            System.out.println("element not found");
+//        }else{
+//            System.out.println("element found at index: " + result);
+//        }
     }
 }
