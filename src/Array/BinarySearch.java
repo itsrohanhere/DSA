@@ -9,8 +9,41 @@ public class BinarySearch {
 //        firstOccuranceByBinarySearch(arr,56);
 //        firstOccurance(arr,56);
 //        lastOccurance(arr,56);
-        binarySearchFloor(arr,55);
+//        binarySearchFloor(arr,55);
 
+        binarySearchMAD(arr,100);
+    }
+    static void binarySearchMAD(int[] arr, int target){
+        int start = 0;
+        int end = arr.length-1;
+        int result = 0;
+        while(start<=end){
+            int mid = start + (end-start)/2;
+            if(arr[mid]==target){
+                result = Math.abs(target-arr[mid]);
+                System.out.println(result);
+                return;
+            }else if(arr[mid]>target){
+                end = mid-1;
+
+            }else{
+                start = mid+1;
+            }
+        }
+        if(end == -1){
+            result = Math.abs(target-arr[start]);
+            System.out.println(result+" int end = -1 ");
+            return;
+        }else if(start == arr.length){
+            result = Math.abs(target-arr[end]);
+            System.out.println(result+" int start = N ");
+            return;
+        }else{
+            int a = Math.abs(target-arr[start]);
+            int b = Math.abs(target-arr[end]);
+            System.out.println((a<b)?a:b);
+            return;
+        }
     }
     static void binarySearch(int[] arr, int target){
         int result = -1;
