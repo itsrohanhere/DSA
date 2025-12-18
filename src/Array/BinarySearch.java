@@ -2,7 +2,7 @@ package Array;
 
 public class BinarySearch {
     public static void main(String[] args) {
-        int[] arr = {22,23,25,34,56,56,56,56,56,65,87,88,89,95};
+        int[] arr = {22,23,25,34,56,56,56,56,56,65,87,88,89,95,101,110,125,132,35,139,142,145,148,152,153,154,159,160,162,166,169,170,177,178,180,185,190,195,199,201,202,204,205,206,209,215,219,220,225,250,255,260};
 //        int[] arr2 = {99,85,74,65,42,32,20,1};
 //        binarySearch(arr,25);
 //        binarySearchDesc(arr2,20);
@@ -11,8 +11,41 @@ public class BinarySearch {
 //        lastOccurance(arr,56);
 //        binarySearchFloor(arr,55);
 
-        binarySearchMAD(arr,100);
+//        binarySearchMAD(arr,100);
+        infiniteArray(arr,166);
     }
+    static void binarywithparam(int[] arr, int start,int end,int target){
+        while(start<=end){
+            int mid = start+(end-start)/2;
+            if(arr[mid]==target){
+                System.out.println("fount at index "+mid+"->"+arr[mid]);
+                return;
+            }else if(arr[mid]>target){
+                end = mid-1;
+            }else{
+                start = mid+1;
+            }
+        }
+    }
+    static void infiniteArray(int[] arr, int target){
+        // considering the array is infinite
+        // there will be no end
+        int start  = 0;
+        int end = 1;
+        // first we find end and set the start
+        int i = 0;
+        while(arr[end]<target){
+            start = end;
+            if(arr[end] < target){
+                end = (int)Math.pow(2,++i);
+            }
+
+        }
+
+        System.out.println(start+"<- "+arr[start]+"    "+arr[end]+" ->"+end);
+        binarywithparam(arr,start,end,target);
+    }
+
     static void binarySearchMAD(int[] arr, int target){
         int start = 0;
         int end = arr.length-1;
