@@ -33,9 +33,32 @@ public class RotatedSortedArray{
         return -1;
     }
 
-    public static void main(String[] args) {
-        int[] arr = {5,1,3};
-        System.out.println(arr[search(arr,5)]);
+    public static int minimum(int[] arr){
+        int low = 0;
+        int high = arr.length - 1;
+        int min = Integer.MAX_VALUE;
+        while(low<=high){
+            int mid = low+(high-low)/2;
+            min = Math.min(min, arr[mid]);
+            if (arr[low] <= arr[mid]) {
+                // is this sorted;
+                min = Math.min(min, arr[low]);
+                low = mid+1;
+            }else{
+                // not sorted
+                min = Math.min(min,arr[mid+1]);
+                high = mid-1;
+            }
 
+            // going to seconf half for searching low
+
+        }
+        return min;
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {8,9,10,11,12,15,18,19,20,1,2,3,4,5,6};
+//        System.out.println(arr[search(arr,5)]);
+        System.out.println(minimum(arr));
     }
 }
