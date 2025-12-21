@@ -36,7 +36,8 @@ public class RotatedSortedArray{
     public static int minimum(int[] arr){
         int low = 0;
         int high = arr.length - 1;
-        int min = Integer.MAX_VALUE;
+//        int min = Integer.MAX_VALUE;
+        int min = -10000;
         while(low<=high){
             int mid = low+(high-low)/2;
             min = Math.min(min, arr[mid]);
@@ -50,7 +51,7 @@ public class RotatedSortedArray{
                 high = mid-1;
             }
 
-            // going to seconf half for searching low
+            // going to second half for searching low
 
         }
         return min;
