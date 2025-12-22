@@ -243,4 +243,70 @@ public class BinarySearch {
 //            System.out.println("element found at index: " + result);
 //        }
     }
+
+}
+class Solution {
+    public int smallestDivisor(int[] nums, int threshold) {
+        int max = 0;
+        for(int i = 0 ; i < nums.length ; i++){
+            if(nums[i] > max){
+                max = nums[i];
+            }
+        }
+        // first check
+        if(nums.length == threshold){
+            return max;
+        }
+
+        int start = 1;
+        int end = max;
+        int ans = 0;
+        while(start <= end){
+            int mid = start + (end - start)/2;
+
+            if(newThreshold(nums,threshold,mid)){
+                end = mid - 1;
+                ans = mid;
+            }else{
+                start = mid + 1;
+            }
+
+        }
+        return ans;
+
+    }
+
+    public static boolean newThreshold(int[] nums , int threshold, int mid){
+        int sum = 0;
+        for(int i = 0 ; i < nums.length ;i++){
+            int digit = (int) Math.ceil(nums[i]/mid);
+            if(nums[i]%mid != 0){
+                digit++;
+            }
+
+            sum += digit;
+
+        }
+
+        return sum <= threshold;
+    }
+}
+class Solution2 {
+    public int minimizedMaximum(int n, int[] quantities) {
+        int start = 1,end = 100000;
+
+        while(start < end){
+            int mid = (end + start)/2, sum = 0;
+            for(int ele : quantities){
+                sum += (ele + mid - 1)/mid;
+                //using -1 because of the case where (mid = ele)
+            }
+            if(sum > n){
+                start = mid + 1;
+            }else{
+                end = mid;
+            }
+        }
+        return start;
+    }
 }
