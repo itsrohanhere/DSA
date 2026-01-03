@@ -2,24 +2,23 @@ package SortingAlgo;
 
 public class SelectionSort {
     public static void selectionSort(int[] arr){
-        for(int i = 0; i < arr.length; i++){
-            int min = arr[i]; // let minimum element
-            int minIndex = i; // minimum index
-            int j = i+1;
-            while(j < arr.length){
+        int i = 0;
+        while(i < arr.length){
+            int minIndex = i;
+            int min = arr[i];
+            for(int j = i+1; j < arr.length; j++){
                 if(arr[j] < min){
+                    min = arr[j];
                     minIndex = j;
                 }
-                j++;
             }
 
-            // swapping the elements minimum
-            int  temp = arr[minIndex];
-            arr[minIndex] = arr[i];
-            arr[i] = temp;
 
+            int temp = arr[i];
+            arr[i] = arr[minIndex];
+            arr[minIndex] = temp;
 
-
+            i++;
         }
         for(int k : arr){
             System.out.print(" "+k);
